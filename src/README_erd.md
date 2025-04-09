@@ -16,6 +16,7 @@ varchar name
 varchar city
 }
 dim_time {
+    
 date date
 bigint month
 bigint year
