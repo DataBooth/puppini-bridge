@@ -1,0 +1,49 @@
+```mermaid
+erDiagram
+dim_customer {
+bigint customer_id
+varchar name
+varchar region
+}
+dim_product {
+bigint product_id
+varchar name
+varchar category
+}
+dim_store {
+bigint store_id
+varchar name
+varchar city
+}
+dim_time {
+date date
+bigint month
+bigint year
+}
+fact_returns {
+bigint return_id
+bigint product_id
+bigint customer_id
+bigint store_id
+date date
+bigint units_returned
+}
+fact_sales {
+bigint sale_id
+bigint product_id
+bigint customer_id
+bigint store_id
+date date
+bigint units_sold
+double sales_amount
+}
+puppini_bridge {
+varchar _KEY_fact_sales
+varchar Stage
+}
+
+fact_sales }}o--o{{ dim_product : "product_id -> product_id"
+fact_sales }}o--o{{ dim_customer : "customer_id -> customer_id"
+fact_sales }}o--o{{ dim_store : "store_id -> store_id"
+fact_sales }}o--o{{ dim_time : "date -> date"
+```
